@@ -31,28 +31,13 @@ Chrome version 111 or newer. To check your version, go to `chrome://settings/hel
 
 ## Install manually (2 minutes)
 
-1. **Download this project**
-   Click the green **Code** button above, then **Download ZIP**
-   Unzip the folder somewhere on your computer
+1. **[Download Exposed.zip](https://github.com/adventurelands/chrome.exposed/releases/latest/download/Exposed.zip)** and unzip it
 
-2. **Open Chrome Extensions**
-   Type `chrome://extensions` in your address bar and hit Enter
-   Turn on **Developer mode** (toggle in the top right corner)
+2. Open `chrome://extensions` and turn on **Developer mode** (top right corner)
 
-3. **Load the extension**
-   Click **Load unpacked**
-   Navigate into the unzipped folder until you see `manifest.json`, then select **that** folder
-   (If you downloaded the ZIP from GitHub, it will be inside a folder called `chrome.exposed-main`)
+3. Click **Load unpacked** and select the folder called **Exposed (Load this folder in Chrome)**
 
 4. **Done.** The Exposed icon appears in your toolbar. Browse to any website and click it to see what data is being shared.
-
-## Troubleshooting
-
-**"Manifest file is missing or unreadable"**
-You selected the wrong folder. Make sure you open the folder that directly contains `manifest.json`, not the parent folder or the ZIP file itself.
-
-**"Invalid value for 'content_scripts[0].world'"**
-Your Chrome is too old. Exposed requires Chrome 111 or newer. Update Chrome at `chrome://settings/help`.
 
 ## How to use it
 
