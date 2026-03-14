@@ -25,6 +25,10 @@ Exposed is a free Chrome extension that watches what websites do with your data 
 
 *Pending approval.*
 
+## Requires
+
+Chrome version 111 or newer. To check your version, go to `chrome://settings/help`.
+
 ## Install manually (2 minutes)
 
 1. **Download this project**
@@ -37,9 +41,18 @@ Exposed is a free Chrome extension that watches what websites do with your data 
 
 3. **Load the extension**
    Click **Load unpacked**
-   Select the folder you just unzipped (the one with `manifest.json` in it)
+   Navigate into the unzipped folder until you see `manifest.json`, then select **that** folder
+   (If you downloaded the ZIP from GitHub, it will be inside a folder called `chrome.exposed-main`)
 
 4. **Done.** The Exposed icon appears in your toolbar. Browse to any website and click it to see what data is being shared.
+
+## Troubleshooting
+
+**"Manifest file is missing or unreadable"**
+You selected the wrong folder. Make sure you open the folder that directly contains `manifest.json`, not the parent folder or the ZIP file itself.
+
+**"Invalid value for 'content_scripts[0].world'"**
+Your Chrome is too old. Exposed requires Chrome 111 or newer. Update Chrome at `chrome://settings/help`.
 
 ## How to use it
 

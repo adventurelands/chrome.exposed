@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "Exposed",
   "version": "1.0.0",
+  "minimum_chrome_version": "111",
   "description": "See what types of personal data your browser shares with third parties.",
   "permissions": [
     "webRequest",
