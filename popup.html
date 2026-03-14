@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=380">
+  <link rel="stylesheet" href="popup.css">
+  <title>Exposed</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div id="header-top">
+        <button id="back-btn" class="back-btn hidden">&larr;</button>
+        <h1>Exposed</h1>
+      </div>
+      <p id="subtitle" class="subtitle"></p>
+      <div id="scope-toggle" class="scope-toggle">
+        <button class="scope-btn active" data-scope="tab">This tab</button>
+        <button class="scope-btn" data-scope="all">All tabs</button>
+        <button class="scope-btn" data-scope="session">This session</button>
+      </div>
+    </header>
+    <main>
+      <div id="category-list"></div>
+      <div id="detail-view" class="hidden"></div>
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">&#10003;</div>
+        <p class="empty-title">Looking clean</p>
+        <p class="empty-desc">No data sharing detected on this page.</p>
+      </div>
+    </main>
+    <footer>
+      <p class="disclaimer">Shows only what's visible to this extension. Actual exposure may be greater.</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
