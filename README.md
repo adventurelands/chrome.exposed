@@ -95,4 +95,4 @@ icons/                 Extension icons
 
 ## License
 
-MIT
+GPL v3. See [LICENSE](LICENSE) for details.
