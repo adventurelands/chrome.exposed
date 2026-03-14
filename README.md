@@ -2,9 +2,11 @@
 
 **See what personal data your browser shares with third parties.**
 
-Exposed is a free Chrome extension that watches what websites do with your data and tells you in plain English. It doesn't block anything — it just shows you what's happening.
+Exposed is a free Chrome extension that watches what websites do with your data and tells you in plain English. It doesn't block anything, it just shows you what's happening.
 
 ![Exposed screenshot](https://raw.githubusercontent.com/adventurelands/chrome.exposed/main/screenshots/exposed-main.png)
+
+![Exposed detail view](https://raw.githubusercontent.com/adventurelands/chrome.exposed/main/screenshots/exposed-detail.png)
 
 ## What it detects
 
@@ -13,40 +15,42 @@ Exposed is a free Chrome extension that watches what websites do with your data 
 | **Email** | Your email address sent to ad networks or trackers |
 | **Name** | Your name passed to third parties through URLs |
 | **Device ID** | Sites fingerprinting your device (canvas, WebGL, audio) |
-| **Location** | GPS requests or IP-based location lookups |
+| **Location** | GPS requests or IP based location lookups |
 | **Search Terms** | What you searched for, forwarded to trackers |
 | **IP Address** | Your IP shared with known tracking companies |
 | **Browsing History** | The page you're on, shared via referer headers |
-| **Cross-Site Tracking** | Tracking cookies that follow you across websites |
+| **Cross Site Tracking** | Tracking cookies that follow you across websites |
 
 ## Install from Chrome Web Store
 
-*Coming soon.*
+*Pending approval.*
 
 ## Install manually (2 minutes)
 
 1. **Download this project**
-   - Click the green **Code** button above, then **Download ZIP**
-   - Unzip the folder somewhere on your computer
+   Click the green **Code** button above, then **Download ZIP**
+   Unzip the folder somewhere on your computer
 
 2. **Open Chrome Extensions**
-   - Type `chrome://extensions` in your address bar and hit Enter
-   - Turn on **Developer mode** (toggle in the top right corner)
+   Type `chrome://extensions` in your address bar and hit Enter
+   Turn on **Developer mode** (toggle in the top right corner)
 
 3. **Load the extension**
-   - Click **Load unpacked**
-   - Select the folder you just unzipped (the one with `manifest.json` in it)
+   Click **Load unpacked**
+   Select the folder you just unzipped (the one with `manifest.json` in it)
 
 4. **Done.** The Exposed icon appears in your toolbar. Browse to any website and click it to see what data is being shared.
 
 ## How to use it
 
-- **Click the icon** on any website to see a list of data categories being shared
-- **Click any category** to see exactly which companies are getting your data
-- **Switch between views:**
-  - **This tab** — what the current page is sharing
-  - **All tabs** — what all your open tabs are sharing right now
-  - **This session** — everything shared since you opened Chrome
+**Click the icon** on any website to see a list of data categories being shared.
+
+**Click any category** to see exactly which companies are getting your data.
+
+**Switch between views:**
+  **This tab** shows what the current page is sharing.
+  **All tabs** shows what all your open tabs are sharing right now.
+  **This session** shows everything shared since you opened Chrome.
 
 The badge number on the icon shows how many types of data the current page is sharing.
 
@@ -54,42 +58,42 @@ The badge number on the icon shows how many types of data the current page is sh
 
 Exposed is 100% local. It never sends your data anywhere.
 
-- **Zero network requests.** No server, no analytics, no telemetry.
-- **No accounts.** No sign-up, no login, nothing.
-- **Open source.** You're looking at every line of code right now.
-- **Doesn't modify websites.** It only watches and reports.
+**Zero network requests.** No server, no analytics, no telemetry.
+**No accounts.** No sign up, no login, nothing.
+**Open source.** You're looking at every line of code right now.
+**Doesn't modify websites.** It only watches and reports.
 
 Full privacy policy: [davisbrief.com/projects/exposed/privacy](https://davisbrief.com/projects/exposed/privacy)
 
 ## How it works (technical)
 
-- A **service worker** uses Chrome's `webRequest` API to observe (not block) all network requests. It checks URLs for email addresses, names, and search terms being sent to third-party domains. It checks headers for cookies and referer leaks. It compares request domains against a list of ~200 known trackers.
+A **service worker** uses Chrome's `webRequest` API to observe (not block) all network requests. It checks URLs for email addresses, names, and search terms being sent to third party domains. It checks headers for cookies and referer leaks. It compares request domains against a list of known trackers.
 
-- A **content script** (MAIN world) monkey-patches browser APIs that are commonly used for device fingerprinting — canvas, WebGL, AudioContext, and geolocation. When a page calls these APIs, it sends a notification.
+A **content script** (MAIN world) patches browser APIs that are commonly used for device fingerprinting (canvas, WebGL, AudioContext, and geolocation). When a page calls these APIs, it sends a notification.
 
-- A **bridge script** (ISOLATED world) relays those notifications from the page context to the service worker.
+A **bridge script** (ISOLATED world) relays those notifications from the page context to the service worker.
 
-- The **popup** fetches the current state from the service worker and displays it. It polls every 2 seconds.
+The **popup** fetches the current state from the service worker and displays it. It polls every 2 seconds.
 
 No build step. No dependencies. No frameworks. Just 8 files.
 
 ## Files
 
 ```
-manifest.json          — Extension manifest (MV3)
-service-worker.js      — Request monitoring, state management
-content-detect.js      — Fingerprint API detection (MAIN world)
-content-bridge.js      — Message relay (ISOLATED world)
-popup.html             — Popup structure
-popup.css              — Popup styles
-popup.js               — Popup logic
-tracker-domains.json   — Known tracker domains (~200)
-icons/                 — Extension icons
+manifest.json          Extension manifest (MV3)
+service-worker.js      Request monitoring, state management
+content-detect.js      Fingerprint API detection (MAIN world)
+content-bridge.js      Message relay (ISOLATED world)
+popup.html             Popup structure
+popup.css              Popup styles
+popup.js               Popup logic
+tracker-domains.json   Known tracker domains
+icons/                 Extension icons
 ```
 
 ## Built by
 
-[Davis Brief](https://davisbrief.com) — davis@team8.co
+[Davis Brief](https://davisbrief.com) // davis@team8.co
 
 ## License
 
