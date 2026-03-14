@@ -63,9 +63,9 @@
   } catch (e) {}
 
   // --- AudioContext fingerprinting ---
-  // Only hook OfflineAudioContext — it doesn't produce audible sound and is
-  // the specific API used for audio fingerprinting.  Regular AudioContext is
-  // used legitimately by music players, games, etc. and would cause false positives.
+  // OfflineAudioContext is used for audio fingerprinting but also by legitimate
+  // audio/video platforms (LiveKit, Zoom, etc.). We send a separate message type
+  // so the service worker can check if the page has tracker scripts before flagging.
   try {
     const origOfflineCreateOscillator =
       OfflineAudioContext.prototype.createOscillator;
@@ -74,7 +74,7 @@
       if (!offlineNotified) {
         offlineNotified = true;
         notify(
-          "fingerprint-detected",
+          "audio-fingerprint-maybe",
           "your device identified via audio"
         );
       }

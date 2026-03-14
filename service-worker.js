@@ -503,6 +503,15 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     const evidence = typeof msg.evidence === "string" ? msg.evidence.slice(0, 200) : "fingerprinting API used";
     addExposure(tabId, CATEGORIES.FINGERPRINT, evidence);
   }
+  // Audio fingerprint: only flag if the page has tracker scripts (legitimate
+  // audio/video platforms like LiveKit, Zoom, etc. also use OfflineAudioContext)
+  if (msg.type === "audio-fingerprint-maybe") {
+    const tab = tabState.get(tabId);
+    if (tab && tab.exposures.has(CATEGORIES.IP_ADDRESS)) {
+      const evidence = typeof msg.evidence === "string" ? msg.evidence.slice(0, 200) : "your device identified via audio";
+      addExposure(tabId, CATEGORIES.FINGERPRINT, evidence);
+    }
+  }
   if (msg.type === "geolocation-detected") {
     const evidence = typeof msg.evidence === "string" ? msg.evidence.slice(0, 200) : "GPS location requested";
     addExposure(tabId, CATEGORIES.LOCATION, evidence);
