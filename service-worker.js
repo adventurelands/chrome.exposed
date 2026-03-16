@@ -62,11 +62,8 @@ function addExposure(tabId, category, evidence) {
   if (!tab.exposures.has(category)) {
     tab.exposures.set(category, new Set());
   }
-  // Cap evidence per category per tab
   const evidenceSet = tab.exposures.get(category);
-  if (evidenceSet.size < 20) {
-    evidenceSet.add(evidence);
-  }
+  evidenceSet.add(evidence);
 
   // Also record in session history (keyed by domain, never deleted)
   if (tab.domain) {
@@ -78,9 +75,7 @@ function addExposure(tabId, category, evidence) {
       session.exposures.set(category, new Set());
     }
     const sessionEvidence = session.exposures.get(category);
-    if (sessionEvidence.size < 50) {
-      sessionEvidence.add(evidence);
-    }
+    sessionEvidence.add(evidence);
     debouncedSessionPersist();
   }
 
