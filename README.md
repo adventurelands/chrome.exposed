@@ -1,6 +1,6 @@
 # Exposed
 
-**See what personal data your browser shares with third parties.**
+**See what personal data sites share with third parties.**
 
 Exposed is a free Chrome extension that watches what websites do with your data and tells you in plain English. It doesn't block anything, it just shows you what's happening.
 

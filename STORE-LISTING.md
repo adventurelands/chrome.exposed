@@ -1,7 +1,7 @@
 # Chrome Web Store Listing
 
 ## Name
-Exposed — See What Your Browser Shares
+Exposed — See What Sites Share
 
 ## Short Description (132 chars max)
 See what personal data websites share with third parties. Email, location, device ID, tracking cookies — all in plain English.
@@ -12,7 +12,7 @@ Every website you visit shares your personal data with third parties. Ad network
 
 Exposed changes that.
 
-It's a simple extension that watches what your browser sends to third parties and shows you the results in plain English. No technical jargon. No confusing dashboards. Just a clear list of what data is being shared and with who.
+It's a simple extension that watches what sites send to third parties and shows you the results in plain English. No technical jargon. No confusing dashboards. Just a clear list of what data is being shared and with who.
 
 WHAT IT DETECTS:
 - Email — your email address sent to ad networks

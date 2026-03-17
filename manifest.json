@@ -3,7 +3,7 @@
   "name": "Exposed",
   "version": "1.0.0",
   "minimum_chrome_version": "111",
-  "description": "See what types of personal data your browser shares with third parties.",
+  "description": "See what types of personal data sites share with third parties.",
   "permissions": [
     "webRequest",
     "tabs",
