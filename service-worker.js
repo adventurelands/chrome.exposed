@@ -248,7 +248,7 @@ function updateBadge() {
 
 function debouncedBadge() {
   clearTimeout(badgeTimer);
-  badgeTimer = setTimeout(updateBadge, 200);
+  badgeTimer = setTimeout(updateBadge, 500);
 }
 
 // --- Persistence ---
@@ -516,9 +516,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 // --- Init ---
 
 async function init() {
-  await loadTrackers();
-  await restoreState();
-  await restoreSessionHistory();
+  // Load trackers in parallel with state restoration for faster startup
+  const [,] = await Promise.all([
+    loadTrackers(),
+    restoreState(),
+    restoreSessionHistory(),
+  ]);
 
   // Reconcile restored state with actual open tabs
   const tabs = await chrome.tabs.query({});
@@ -553,7 +556,7 @@ async function init() {
       }
       const sessionEvidence = session.exposures.get(cat);
       for (const e of evidenceSet) {
-        if (sessionEvidence.size < 50) sessionEvidence.add(e);
+        sessionEvidence.add(e);
       }
     }
   }

@@ -364,5 +364,5 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     }
   });
   refresh();
-  setInterval(refresh, 2000);
+  setInterval(refresh, 5000);
 });
